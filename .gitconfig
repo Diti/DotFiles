@@ -1,0 +1,21 @@
+[alias]
+	scommit = commit -S
+	slog = log --show-signature
+	smerge = merge -S --no-ff
+	st = status
+[color]
+	ui = true
+[commit]
+	gpgSign = true
+[core]
+	autocrlf = input
+	editor = vim
+	excludesFile = ~/.gitignore_global
+[help]
+	autoCorrect = 1
+[push]
+	default = simple
+[user]
+	signingkey = 0xFD4F1D56645219A0C6F6F9AB31A49121CD42FF00
+	email = kra@diti.me
+	name = Diti Torterat
