@@ -168,3 +168,10 @@ RPROMPT="%~"							# `~/proj`
 # ********************* #
 alias ls='ls -lh'
 alias reload='. ~/.zshrc'
+
+# ************ #
+#              #
+#    Extras    #
+#              #
+# ************ #
+umask 0077 # -rw------- permissions by default. I use ACLs anyway!
