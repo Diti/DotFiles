@@ -12,24 +12,24 @@
 
 # Set more understandable OS names
 case "$OSTYPE" in
-	"darwin"*) DT_OS="Mac" ;;
-	"linux"*)  DT_OS="Linux" ;;
-	*)         printf "Some settings in ~/.zshrc may not work; OS unsupported.\n" 1>&2
+  "darwin"*) DT_OS="Mac" ;;
+  "linux"*)  DT_OS="Linux" ;;
+  *)         printf "Some settings in ~/.zshrc may not work; OS unsupported.\n" 1>&2
 esac
 
 # Do we have Homebrew?
 # Return 0 if yes ("no error"), 1 if no.
 is_brew_installed() {
-	if [[ "$DT_OS" == "Mac" ]]; then
-		if type "brew" >/dev/null; then
-			BREW_PREFIX="$(brew --cellar)/.." # Needed because of school 42’s local Homebrew installation
-			return 0
-		else
-			return 1
-		fi
-	else
-		return 1
-	fi
+  if [[ "$DT_OS" == "Mac" ]]; then
+    if type "brew" >/dev/null; then
+      BREW_PREFIX="$(brew --cellar)/.." # Needed because of school 42’s local Homebrew installation
+      return 0
+    else
+      return 1
+    fi
+  else
+    return 1
+  fi
 }
 
 # ********************************* #
@@ -38,9 +38,9 @@ is_brew_installed() {
 #                                   #
 # ********************************* #
 if type "vim" >/dev/null; then
-	export EDITOR=vim
-	export USE_EDITOR=$EDITOR
-	export VISUAL=$EDITOR
+  export EDITOR=vim
+  export USE_EDITOR=$EDITOR
+  export VISUAL=$EDITOR
 fi
 
 export GPG_TTY=$(tty)
@@ -48,31 +48,31 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 if [[ "$DT_OS" == "Mac" ]]; then
-	# Environment variables specific to my home computer
-	if [[ "$HOST" == "Iceberg" ]]; then
-		# Boot2docker
-		export DOCKER_HOST=tcp://192.168.59.103:2376
-		export DOCKER_CERT_PATH=/Users/diti/.boot2docker/certs/boot2docker-vm
-		export DOCKER_TLS_VERIFY=1
+  # Environment variables specific to my home computer
+  if [[ "$HOST" == "Iceberg" ]]; then
+    # Boot2docker
+    export DOCKER_HOST=tcp://192.168.59.103:2376
+    export DOCKER_CERT_PATH=/Users/diti/.boot2docker/certs/boot2docker-vm
+    export DOCKER_TLS_VERIFY=1
 
-		# Android development
-		export ANDROID_HOME=/Users/diti/Library/Android/sdk
-		export GRADLE_HOME=/usr/local/opt/gradle/libexec/
-		export PATH=${JAVA_HOME}/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:/opt/local/bin:/opt/local/sbin:$PATH
-	fi
+    # Android development
+    export ANDROID_HOME=/Users/diti/Library/Android/sdk
+    export GRADLE_HOME=/usr/local/opt/gradle/libexec/
+    export PATH=${JAVA_HOME}/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:/opt/local/bin:/opt/local/sbin:$PATH
+  fi
 
-	if is_brew_installed; then
-		# Use Homebrew binaries in priority
-		export PATH="${BREW_PREFIX}/bin:${PATH}"
+  if is_brew_installed; then
+    # Use Homebrew binaries in priority
+    export PATH="${BREW_PREFIX}/bin:${PATH}"
 
-		if brew list -1 | grep -q "^zsh-completions\$"; then
-			fpath=(${BREW_PREFIX}/share/zsh-completions $fpath)
-		fi
-		# The `zsh-syntax-highlighting` sourcing must “stay at the end”
-		if brew list -1 | grep -q "^zsh-syntax-highlighting\$"; then
-			. ${BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-		fi
-	fi
+    if brew list -1 | grep -q "^zsh-completions\$"; then
+      fpath=(${BREW_PREFIX}/share/zsh-completions $fpath)
+    fi
+    # The `zsh-syntax-highlighting` sourcing must “stay at the end”
+    if brew list -1 | grep -q "^zsh-syntax-highlighting\$"; then
+      . ${BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    fi
+  fi
 fi
 
 # ********************************** #
@@ -82,7 +82,7 @@ fi
 # ********************************** #
 # Store them in an sourceable `#!/bin/sh` file
 if [ -f "${HOME}/.private" ]; then
-	. "${HOME}/.private"
+  . "${HOME}/.private"
 fi
 
 # ************************* #
@@ -91,14 +91,14 @@ fi
 #                           #
 # ************************* #
 if type "gpg-agent" >/dev/null; then
-	gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info" >/dev/null
+  gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info" >/dev/null
 fi
 
 if [ -f "${HOME}/.gpg-agent-info" ]; then
-	. "${HOME}/.gpg-agent-info"
-	export GPG_AGENT_INFO
-	export SSH_AUTH_SOCK
-	export SSH_AGENT_PID
+  . "${HOME}/.gpg-agent-info"
+  export GPG_AGENT_INFO
+  export SSH_AUTH_SOCK
+  export SSH_AGENT_PID
 fi
 
 # *************************************** #
@@ -109,7 +109,7 @@ fi
 if [[ "$DT_OS" == "Linux" ]]; then
     local hlfile="/usr/share/source-highlight/src-hilite-lesspipe.sh"
 elif [[ "$DT_OS" == "Mac" ]]; then
-	if is_brew_installed; then
+  if is_brew_installed; then
          if brew list -1 | grep -q "^source-highlight\$"; then
              local hlfile="${BREW_PREFIX}/bin/src-hilite-lesspipe.sh"
          fi
@@ -163,8 +163,8 @@ setopt interactivecomments
 #    Prompt    #
 #              #
 # ************ #
-PROMPT="%F{green}%n%f@%F{blue}%m%f $ "	# `diti@Iceberg $ `
-RPROMPT="%~"							# `~/proj`
+PROMPT="%F{green}%n%f@%F{blue}%m%f $ " # `diti@Iceberg $ `
+RPROMPT="%~"                           # `~/proj`
 
 # ********************* #
 #                       #
