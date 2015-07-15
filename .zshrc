@@ -32,11 +32,11 @@ is_brew_installed() {
   fi
 }
 
-# ********************************* #
-#                                   #
-#    Public environment variables   #
-#                                   #
-# ********************************* #
+# ********************************** #
+#                                    #
+#    Public environment variables    #
+#                                    #
+# ********************************** #
 if type "vim" >/dev/null; then
   export EDITOR=vim
   export USE_EDITOR=$EDITOR
@@ -75,11 +75,11 @@ if [[ "$DT_OS" == "Mac" ]]; then
   fi
 fi
 
-# ********************************** #
-#                                    #
-#    Private environment variables   #
-#                                    #
-# ********************************** #
+# *********************************** #
+#                                     #
+#    Private environment variables    #
+#                                     #
+# *********************************** #
 # Store them in an sourceable `#!/bin/sh` file
 if [ -f "${HOME}/.private" ]; then
   . "${HOME}/.private"
