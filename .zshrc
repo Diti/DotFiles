@@ -175,6 +175,8 @@ setopt no_bang_hist
 # Enable the use of `# <cmd>`, commented lines
 setopt interactivecomments
 
+setopt autocd
+
 # ************ #
 #              #
 #    Prompt    #
