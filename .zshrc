@@ -52,11 +52,11 @@ if [[ "$DT_OS" == "Mac" ]]; then
   if [[ "$HOST" == "Iceberg" ]]; then
     # Boot2docker
     export DOCKER_HOST=tcp://192.168.59.103:2376
-    export DOCKER_CERT_PATH=/Users/diti/.boot2docker/certs/boot2docker-vm
+    export DOCKER_CERT_PATH=${HOME}/.boot2docker/certs/boot2docker-vm
     export DOCKER_TLS_VERIFY=1
 
     # Android development
-    export ANDROID_HOME=/Users/diti/Library/Android/sdk
+    export ANDROID_HOME=${HOME}/Library/Android/sdk
     export GRADLE_HOME=/usr/local/opt/gradle/libexec/
     export PATH=${JAVA_HOME}/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:/opt/local/bin:/opt/local/sbin:$PATH
   fi
