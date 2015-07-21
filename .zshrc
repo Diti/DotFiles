@@ -179,4 +179,4 @@ alias reload='. ~/.zshrc'
 #    Extras    #
 #              #
 # ************ #
-umask 0077 # -rw------- permissions by default. I use ACLs anyway!
+umask 0027 # -rw-r----- and drwxr-x--- permissions by default. Group’s X needed for ACLs
