@@ -32,6 +32,21 @@ is_brew_installed() {
   fi
 }
 
+# ********************* #
+#                       #
+#    Package updates    #
+#                       #
+# ********************* #
+# Put `brew update` in `crontab` for this check to be reliable
+if is_brew_installed; then
+  outdated=$(brew outdated)
+  if [ -n "$outdated" ]; then
+    echo 'Homebrew has some outdated packages:' 1>&2
+    (echo $outdated | sed 's/^/• /') 1>&2
+    echo 'You may wish to `brew upgrade --all`.' 1>&2
+  fi
+fi
+
 # ********************************** #
 #                                    #
 #    Public environment variables    #
