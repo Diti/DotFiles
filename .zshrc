@@ -1,3 +1,4 @@
+#!/bin/zsh
 # **************************************************************************** #
 #                                                                              #
 #                                                 [E-mail]            The      #
@@ -14,23 +15,24 @@
 case "$OSTYPE" in
   "darwin"*) DT_OS="Mac" ;;
   "linux"*)  DT_OS="Linux" ;;
-  *)         printf "Some settings in ~/.zshrc may not work; OS unsupported.\n" 1>&2
+  *)         echo 'Some settings in ~/.zshrc may not work; OS unsupported.' 1>&2
 esac
 
 # Do we have Homebrew?
-# Return 0 if yes ("no error"), 1 if no.
-is_brew_installed() {
-  if [[ "$DT_OS" == "Mac" ]]; then
-    if type "brew" >/dev/null; then
-      BREW_PREFIX="$(brew --cellar)/.." # Needed because of school 42’s local Homebrew installation
-      return 0
-    else
-      return 1
-    fi
+# For use in scripts, 0 if yes ("no error"), 1 if no.
+if [ "$DT_OS" = "Mac" ]; then
+  if type "brew" >/dev/null; then
+    BREW_INSTALLED=true
   else
-    return 1
+    BREW_INSTALLED=false
   fi
-}
+else
+  BREW_INSTALLED=false
+fi
+
+if [ "$BREW_INSTALLED" = true ]; then
+  BREW_PREFIX="$(brew --cellar)/.." # Needed because of school 42’s local Homebrew installation
+fi
 
 # ********************* #
 #                       #
@@ -38,11 +40,11 @@ is_brew_installed() {
 #                       #
 # ********************* #
 # Put `brew update` in `crontab` for this check to be reliable
-if is_brew_installed; then
+if [ "$BREW_INSTALLED" = true ]; then
   outdated=$(brew outdated)
   if [ -n "$outdated" ]; then
     echo 'Homebrew has some outdated packages:' 1>&2
-    (echo $outdated | sed 's/^/• /') 1>&2
+    (echo "$outdated" | sed 's/^/• /') 1>&2
     echo 'You may wish to `brew upgrade --all`.' 1>&2
   fi
 fi
@@ -62,9 +64,9 @@ export GPG_TTY=$(tty)
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-if [[ "$DT_OS" == "Mac" ]]; then
+if [ "$DT_OS" = "Mac" ]; then
   # Environment variables specific to my home computer
-  if [[ "$HOST" == "Iceberg" ]]; then
+  if [ "$HOST" = "Iceberg" ]; then
     # Boot2docker
     export DOCKER_HOST=tcp://192.168.59.103:2376
     export DOCKER_CERT_PATH=${HOME}/.boot2docker/certs/boot2docker-vm
@@ -76,16 +78,16 @@ if [[ "$DT_OS" == "Mac" ]]; then
     export PATH=${JAVA_HOME}/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:/opt/local/bin:/opt/local/sbin:$PATH
   fi
 
-  if is_brew_installed; then
+  if [ "$BREW_INSTALLED" = true ]; then
     # Use Homebrew binaries in priority
-    export PATH="${BREW_PREFIX}/sbin:${BREW_PREFIX}/bin:${PATH}"
+    export PATH="${BREW_PREFIX}/sbin:${BREW_PREFIX}/bin:${PATH}" # FIXME Multiple PATH concat upon multiple reloads
 
     if brew list -1 | grep -q "^zsh-completions\$"; then
       fpath=(${BREW_PREFIX}/share/zsh-completions $fpath)
     fi
     # The `zsh-syntax-highlighting` sourcing must “stay at the end”
     if brew list -1 | grep -q "^zsh-syntax-highlighting\$"; then
-      . ${BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+      . "${BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
     fi
   fi
 fi
@@ -121,16 +123,16 @@ fi
 #    `less` pager’s syntax highighting    #
 #                                         #
 # *************************************** #
-if [[ "$DT_OS" == "Linux" ]]; then
+if [ "$DT_OS" = "Linux" ]; then
     local hlfile="/usr/share/source-highlight/src-hilite-lesspipe.sh"
-elif [[ "$DT_OS" == "Mac" ]]; then
-  if is_brew_installed; then
+elif [ "$DT_OS" = "Mac" ]; then
+  if [ "$BREW_INSTALLED" = true ]; then
          if brew list -1 | grep -q "^source-highlight\$"; then
              local hlfile="${BREW_PREFIX}/bin/src-hilite-lesspipe.sh"
          fi
      fi
  else
-     # No alternative yet
+     true # No alternative yet
 fi
 if [ -f "$hlfile" ]; then
     export LESSOPEN="| $hlfile %s"
