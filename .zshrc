@@ -78,7 +78,7 @@ if [[ "$DT_OS" == "Mac" ]]; then
 
   if is_brew_installed; then
     # Use Homebrew binaries in priority
-    export PATH="${BREW_PREFIX}/bin:${PATH}"
+    export PATH="${BREW_PREFIX}/sbin:${BREW_PREFIX}/bin:${PATH}"
 
     if brew list -1 | grep -q "^zsh-completions\$"; then
       fpath=(${BREW_PREFIX}/share/zsh-completions $fpath)
