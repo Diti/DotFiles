@@ -42,11 +42,12 @@ fi
 # Put `brew update` in `crontab` for this check to be reliable
 if [ "$BREW_INSTALLED" = true ]; then
   outdated=$(brew outdated)
+
   if [ -n "$outdated" ]; then
-    echo 'Homebrew has some outdated packages:' 1>&2
+    echo '[i] Some Homebrew packages should be upgraded:' 1>&2
     (echo "$outdated" | sed 's/^/• /') 1>&2
-    echo 'You may wish to `brew upgrade --all`.' 1>&2
   fi
+
 fi
 
 # ********************************** #
@@ -108,7 +109,7 @@ fi
 #                           #
 # ************************* #
 if type "gpg-agent" >/dev/null; then
-  gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info" >/dev/null
+  gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info" >/dev/null 2>&1
 fi
 
 if [ -f "${HOME}/.gpg-agent-info" ]; then
