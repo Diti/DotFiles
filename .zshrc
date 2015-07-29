@@ -30,8 +30,11 @@ else
   BREW_INSTALLED=false
 fi
 
+# The following fix is needed because of school 42’s local Homebrew installation
 if [ "$BREW_INSTALLED" = true ]; then
-  BREW_PREFIX="$(brew --cellar)/.." # Needed because of school 42’s local Homebrew installation
+  BREW_PREFIX="$(dirname $(brew --cellar))"
+
+  alias brew="${BREW_PREFIX}/bin/brew"
 fi
 
 # ********************* #
