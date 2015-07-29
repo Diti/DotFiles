@@ -58,33 +58,25 @@ fi
 #    Public environment variables    #
 #                                    #
 # ********************************** #
-if type "vim" >/dev/null; then
-  export EDITOR=vim
-  export USE_EDITOR=$EDITOR
-  export VISUAL=$EDITOR
-fi
-
-export GPG_TTY=$(tty)
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
+# Most variables are set in ~/.zshenv, automatically loaded at launch.
+# We only export her if they are truly needed, here.
 if [ "$DT_OS" = "Mac" ]; then
   # Environment variables specific to my home computer
   if [ "$HOST" = "Iceberg" ]; then
     # Boot2docker
-    export DOCKER_HOST=tcp://192.168.59.103:2376
-    export DOCKER_CERT_PATH=${HOME}/.boot2docker/certs/boot2docker-vm
-    export DOCKER_TLS_VERIFY=1
+    export $DOCKER_HOST
+    export $DOCKER_CERT_PATH
+    export $DOCKER_TLS_VERIFY
 
     # Android development
-    export ANDROID_HOME=${HOME}/Library/Android/sdk
-    export GRADLE_HOME=/usr/local/opt/gradle/libexec/
-    export PATH=${JAVA_HOME}/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:/opt/local/bin:/opt/local/sbin:$PATH
+    export PATH=${ANDROID_PATH}:$PATH
   fi
 
   if [ "$BREW_INSTALLED" = true ]; then
     # Use Homebrew binaries in priority
-    export PATH="${BREW_PREFIX}/sbin:${BREW_PREFIX}/bin:${PATH}" # FIXME Multiple PATH concat upon multiple reloads
+    export PATH="${PATH_WITH_BREW_FIRST}"
+
+    # The following are not really environment variables, but heh!
 
     if brew list -1 | grep -q "^zsh-completions\$"; then
       fpath=(${BREW_PREFIX}/share/zsh-completions $fpath)
@@ -94,16 +86,6 @@ if [ "$DT_OS" = "Mac" ]; then
       . "${BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
     fi
   fi
-fi
-
-# *********************************** #
-#                                     #
-#    Private environment variables    #
-#                                     #
-# *********************************** #
-# Store them in an sourceable `#!/bin/sh` file
-if [ -f "${HOME}/.private" ]; then
-  . "${HOME}/.private"
 fi
 
 # ************************* #
