@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>me.diti.scripts.brewupdate</string>
+
+  <key>ProgramArguments</key>
+  <array>
+      <string>/bin/bash</string>
+      <string>/nfs/zfs-student-5/users/2013/dtortera/.brew/bin/brew</string>
+      <string>update</string>
+  </array>
+
+  <key>Nice</key>
+  <integer>15</integer>
+
+  <key>StartInterval</key>
+  <integer>21600</integer><!-- 6 hours -->
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/brewupdate-out.txt</string>
+
+  <key>StandardErrorPath</key>
+  <string>/tmp/brewupdate-err.txt</string>
+</dict>
+</plist>
