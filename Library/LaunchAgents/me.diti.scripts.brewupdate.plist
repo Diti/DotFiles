@@ -7,9 +7,8 @@
 
   <key>ProgramArguments</key>
   <array>
-      <string>/bin/bash</string>
-      <string>/nfs/zfs-student-5/users/2013/dtortera/.brew/bin/brew</string>
-      <string>update</string>
+      <string>sh -c</string>
+      <string>brew update</string>
   </array>
 
   <key>Nice</key>
