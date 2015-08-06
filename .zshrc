@@ -31,7 +31,7 @@ else
 fi
 
 # The following fix is needed because of school 42’s local Homebrew installation
-if [ "$BREW_INSTALLED" = true ]; then
+if [[ "$HOST" =~ ".*42.fr$" && "$BREW_INSTALLED" = true ]]; then
   BREW_PREFIX="$(dirname $(brew --cellar))"
 
   alias brew="${BREW_PREFIX}/bin/brew"
@@ -168,8 +168,26 @@ setopt autocd
 #    Prompt    #
 #              #
 # ************ #
-PROMPT="%F{green}%n%f@%F{blue}%m%f $ " # `diti@Iceberg $ `
+PROMPT="%F{green}%n%f@%F{blue}%m%f ❯ " # `diti@Iceberg ❯ `
 RPROMPT="%~"                           # `~/proj`
+
+# ********************** #
+#                        #
+#    Custom functions    #
+#                        #
+# ********************** #
+# http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
 
 # ********************* #
 #                       #
