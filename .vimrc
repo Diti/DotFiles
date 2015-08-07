@@ -36,6 +36,8 @@ call plug#end()
 "    Plugin configs    "
 "                      "
 " """""""""""""""""""" "
+let g:colorizer_auto_filetype='css,html'
+
 let g:GPGPreferSign=1
 let g:GPGDefaultRecipients=0xFD4F1D56645219A0C6F6F9AB31A49121CD42FF00
 
