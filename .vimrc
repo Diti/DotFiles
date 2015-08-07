@@ -22,12 +22,12 @@ if !filereadable(expand("~/.vim/autoload/plug.vim"))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'editorconfig/editorconfig-vim'
-"Plug 'Bling/vim-airline'            " Status/tabline for vim that's light as air.
-Plug 'airblade/vim-gitgutter'        " Shows a git diff in the gutter (sign column).
-Plug 'jamessan/vim-gnupg'
-Plug 'tpope/vim-sensible'            " Defaults everyone can agree on.
-Plug 'wombat256.vim'                 " Wombat theme for 256-color terms
+  Plug 'editorconfig/editorconfig-vim'
+ "Plug 'Bling/vim-airline'             " Status/tabline for vim that's light as air.
+  Plug 'airblade/vim-gitgutter'        " Shows a git diff in the gutter (sign column).
+  Plug 'jamessan/vim-gnupg'
+  Plug 'tpope/vim-sensible'            " Defaults everyone can agree on.
+  Plug 'wombat256.vim'                 " Wombat theme for 256-color terms
 call plug#end()
 
 " """""""""""""""""""" "
