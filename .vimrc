@@ -1,3 +1,4 @@
+set cursorline
 set mouse=v
 set t_Co=256
 
