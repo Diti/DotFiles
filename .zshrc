@@ -37,11 +37,11 @@ if [[ "$HOST" =~ ".*42.fr$" && "$BREW_INSTALLED" = true ]]; then
   alias brew="${BREW_PREFIX}/bin/brew"
 fi
 
-# ********************* #
-#                       #
-#    Package updates    #
-#                       #
-# ********************* #
+# ┌────────────────────────────┐
+# │                            │
+# │      Package updates       │
+# │                            │
+# └────────────────────────────┘
 # Put `brew update` in `crontab` for this check to be reliable
 if [ "$BREW_INSTALLED" = true ]; then
   outdated=$(brew outdated)
@@ -53,11 +53,11 @@ if [ "$BREW_INSTALLED" = true ]; then
 
 fi
 
-# ********************************** #
-#                                    #
-#    Public environment variables    #
-#                                    #
-# ********************************** #
+# ┌────────────────────────────┐
+# │                            │
+# │   Environment variables    │
+# │                            │
+# └────────────────────────────┘
 # Most variables are set in ~/.zshenv, automatically loaded at launch.
 # We only export her if they are truly needed, here.
 if [ "$DT_OS" = "Mac" ]; then
@@ -88,11 +88,11 @@ if [ "$DT_OS" = "Mac" ]; then
   fi
 fi
 
-# ************************* #
-#                           #
-#    GnuPG’s `gpg-agent`    #
-#                           #
-# ************************* #
+# ┌────────────────────────────┐
+# │                            │
+# │    GnuPG’s `gpg-agent`     │
+# │                            │
+# └────────────────────────────┘
 if type "gpg-agent" >/dev/null; then
   gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info" >/dev/null 2>&1
 fi
@@ -104,11 +104,12 @@ if [ -f "${HOME}/.gpg-agent-info" ]; then
   export SSH_AGENT_PID
 fi
 
-# *************************************** #
-#                                         #
-#    `less` pager’s syntax highighting    #
-#                                         #
-# *************************************** #
+# ┌────────────────────────────┐
+# │                            │
+# │        `less` pager        │
+# │    syntax highlighting     │
+# │                            │
+# └────────────────────────────┘
 if [ "$DT_OS" = "Linux" ]; then
     local hlfile="/usr/share/source-highlight/src-hilite-lesspipe.sh"
 elif [ "$DT_OS" = "Mac" ]; then
@@ -125,12 +126,11 @@ if [ -f "$hlfile" ]; then
     export LESS=' -R '
 fi
 
-# ****************** #
-#                    #
-#    ZSH settings    #
-#                    #
-# ****************** #
-# Emacs keybindings
+# ┌────────────────────────────┐
+# │                            │
+# │        ZSH settings        │
+# │                            │
+# └────────────────────────────┘
 # FIXME Vim is better :)
 bindkey -e
 
@@ -163,19 +163,19 @@ setopt interactivecomments
 
 setopt autocd
 
-# ************ #
-#              #
-#    Prompt    #
-#              #
-# ************ #
+# ┌────────────────────────────┐
+# │                            │
+# │           Prompt           │
+# │                            │
+# └────────────────────────────┘
 PROMPT="%F{green}%n%f@%F{blue}%m%f ❯ " # `diti@Iceberg ❯ `
 RPROMPT="%~"                           # `~/proj`
 
-# ********************** #
-#                        #
-#    Custom functions    #
-#                        #
-# ********************** #
+# ┌────────────────────────────┐
+# │                            │
+# │      Custom functions      │
+# │                            │
+# └────────────────────────────┘
 # http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
@@ -189,17 +189,17 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-# ********************* #
-#                       #
-#    Command aliases    #
-#                       #
-# ********************* #
+# ┌────────────────────────────┐
+# │                            │
+# │      Command aliases       │
+# │                            │
+# └────────────────────────────┘
 alias ls='ls -lh'
 alias reload='. ~/.zshrc'
 
-# ************ #
-#              #
-#    Extras    #
-#              #
-# ************ #
+# ┌────────────────────────────┐
+# │                            │
+# │           Extras           │
+# │                            │
+# └────────────────────────────┘
 umask 0027 # -rw-r----- and drwxr-x--- permissions by default. Group’s X needed for ACLs
