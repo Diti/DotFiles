@@ -1,21 +1,26 @@
-execute pathogen#infect()
+if filereadable(expand("~/.vim/autoload/plug.vim"))
+  call plug#begin('~/.vim/plugged')
 
-syntax on
-filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
-set expandtab
+  Plug 'morhetz/gruvbox'        " Retro groove color scheme for Vim.
+  Plug 'Bling/vim-airline'      " Lean & mean status/tabline for vim that's light as air.
+  Plug 'airblade/vim-gitgutter' " Shows a git diff in the gutter (sign column).
+  Plug 'jamessan/vim-gnupg'
+  Plug 'tpope/vim-sensible'     " Defaults everyone can agree on.
+  Plug 'reedes/vim-wheel'       " Screen-anchored cursor movement for Vim.
 
-set background=dark
-colorscheme solarized
-set t_Co=256
-call togglebg#map("<F5>")
+  call plug#end()
+endif
 
-set number
-set ruler
-set showcmd
-set cursorline
+" """""""""""""""""""" "
+"                      "
+"    Plugin configs    "
+"                      "
+" """""""""""""""""""" "
+let g:GPGPreferSign=1
+let g:GPGDefaultRecipients=0xFD4F1D56645219A0C6F6F9AB31A49121CD42FF00
 
-"Better command completion
-set wildmenu
-set wildmode=list:longest
+try
+  colorscheme gruvbox
+catch
+  colorscheme default
+endtry
