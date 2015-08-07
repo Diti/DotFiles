@@ -22,6 +22,7 @@ if !filereadable(expand("~/.vim/autoload/plug.vim"))
 endif
 
 call plug#begin('~/.vim/plugged')
+  Plug 'chrisbra/Colorizer'            " Color hex codes and color names.
   Plug 'editorconfig/editorconfig-vim'
  "Plug 'Bling/vim-airline'             " Status/tabline for vim that's light as air.
   Plug 'airblade/vim-gitgutter'        " Shows a git diff in the gutter (sign column).
