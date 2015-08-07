@@ -194,7 +194,7 @@ bindkey '^Z' fancy-ctrl-z
 # │      Command aliases       │
 # │                            │
 # └────────────────────────────┘
-alias ls='ls -lh'
+alias ls='ls -lhFG'
 alias reload='. ~/.zshrc'
 
 # ┌────────────────────────────┐
