@@ -38,8 +38,9 @@ call plug#end()
 let g:GPGPreferSign=1
 let g:GPGDefaultRecipients=0xFD4F1D56645219A0C6F6F9AB31A49121CD42FF00
 
+
 try
   colorscheme wombat256mod
 catch
-  colorscheme default
+  colorscheme desert
 endtry
