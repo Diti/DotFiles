@@ -14,7 +14,9 @@ let mapleader = "\<Space>"
 "Type <Space>w to save file:
 nnoremap <Leader>w :w<CR>
 "Enter visual line mode with <Space><Space>:
-nmap <Leader><Leader> V
+nnoremap <Leader><Leader> V
+
+nnoremap <Leader>n :setlocal number!<CR>
 
 " ┌────────────┐
 " │  VimPlugs  │
