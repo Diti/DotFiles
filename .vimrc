@@ -31,7 +31,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'chrisbra/Colorizer'            " Color hex codes and color names.
   Plug 'editorconfig/editorconfig-vim'
   Plug 'scrooloose/syntastic'          " Syntax checking hacks for vim
- "Plug 'Bling/vim-airline'             " Status/tabline for vim that's light as air.
+  Plug 'Bling/vim-airline'             " Status/tabline for vim that's light as air.
   Plug 'airblade/vim-gitgutter'        " Shows a git diff in the gutter (sign column).
   Plug 'jamessan/vim-gnupg'
   Plug 'tpope/vim-sensible'            " Defaults everyone can agree on.
@@ -41,21 +41,25 @@ call plug#end()
 " ┌──────────────────┐
 " │  Plugin configs  │
 " └──────────────────┘
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.whitespace = 'Ξ'  
+
 let g:colorizer_auto_filetype='css,html'
 
 let g:GPGPreferSign=1
 let g:GPGDefaultRecipients=0xFD4F1D56645219A0C6F6F9AB31A49121CD42FF00
 
-if file_readable(expand("~/.vim/plugged/syntastic/plugin/syntastic.vim"))
-	"set statusline+=%#warningmsg#
-	"set statusline+=%{SyntasticStatuslineFlag()}
-	"set statusline+=%*
-
-	let g:syntastic_always_populate_loc_list = 1
-	let g:syntastic_auto_loc_list = 1
-	let g:syntastic_check_on_open = 1
-	let g:syntastic_check_on_wq = 0
-end
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " ┌─────────────┐
 " │  Vim theme  │
