@@ -34,6 +34,10 @@ fi
 if [[ "$HOST" =~ ".*42.fr$" && "$BREW_INSTALLED" = true ]]; then
   BREW_PREFIX="$(dirname $(brew --cellar))"
 
+  if [ ! -d "$HOME/Library/Caches/Homebrew" ]; then
+	  mkdir -p "$HOME/Library/Caches/Homebrew" && export HOMEBREW_CACHE=$_
+  fi
+
   alias brew="${BREW_PREFIX}/bin/brew"
 fi
 
