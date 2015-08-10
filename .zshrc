@@ -39,6 +39,7 @@ if [[ "$HOST" =~ ".*42.fr$" && "$BREW_INSTALLED" = true ]]; then
   fi
 
   alias brew="${BREW_PREFIX}/bin/brew"
+  export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications --binarydir=${BREW_PREFIX}/bin --caskroom=${BREW_PREFIX}/Caskroom" 
 fi
 
 # ┌────────────────────────────┐
