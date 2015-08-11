@@ -16,7 +16,7 @@ nnoremap <Leader>w :w<CR>
 "Enter visual line mode with <Space><Space>:
 nnoremap <Leader><Leader> V
 
-nnoremap <Leader>n :setlocal number!<CR>
+nnoremap <silent> <Leader>n :setlocal number!<CR>
 
 " ┌────────────┐
 " │  VimPlugs  │
@@ -49,7 +49,7 @@ let g:airline_right_sep = ''
 let g:airline_symbols.linenr = '␤'
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.whitespace = 'Ξ'  
+let g:airline_symbols.whitespace = 'Ξ'
 
 let g:colorizer_auto_filetype='css,html'
 
