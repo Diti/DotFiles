@@ -9,7 +9,7 @@ set t_Co=256
 nnoremap Q <Nop>
 
 "http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
-let mapleader = "\<Space>"
+let mapleader = '\<Space>'
 
 "Type <Space>w to save file:
 nnoremap <Leader>w :w<CR>
@@ -21,7 +21,7 @@ nnoremap <silent> <Leader>n :setlocal number!<CR>
 " ┌────────────┐
 " │  VimPlugs  │
 " └────────────┘
-if !filereadable(expand("~/.vim/autoload/plug.vim"))
+if !filereadable(expand('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall
