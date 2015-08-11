@@ -1,5 +1,6 @@
 [alias]
-	scommit = commit -S
+	co = checkout
+	cm = commit
 	slog = log --show-signature
 	smerge = merge -S --no-ff
 	st = status
