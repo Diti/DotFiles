@@ -7,12 +7,12 @@
 
   <key>ProgramArguments</key>
   <array>
-      <string>sh -c</string>
-      <string>brew update</string>
+    <string>/usr/local/bin/brew</string><!-- FIXME: Won’t work at 42, because ~/.brew/bin/brew instead! -->
+    <string>update</string>
   </array>
 
-  <key>Nice</key>
-  <integer>15</integer>
+  <key>LowPriorityIO</key>
+  <true/>
 
   <key>StartInterval</key>
   <integer>21600</integer><!-- 6 hours -->
