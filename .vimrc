@@ -5,17 +5,18 @@ set t_Co=256
 " ┌─────────────────────┐
 " │  Keyboard bindings  │
 " └─────────────────────┘
-"Disable ex mode:
+" Disable ex mode:
 nnoremap Q <Nop>
 
-"http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+" http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 let mapleader = '\<Space>'
 
-"Type <Space>w to save file:
+" Type <Space>w to save file:
 nnoremap <Leader>w :w<CR>
-"Enter visual line mode with <Space><Space>:
+" Enter visual line mode with <Space><Space>:
 nnoremap <Leader><Leader> V
 
+" Type <Space>N to toggle line numbers:
 nnoremap <silent> <Leader>n :setlocal number!<CR>
 
 " ┌────────────┐
