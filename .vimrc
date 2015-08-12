@@ -16,8 +16,8 @@ nnoremap <Leader>w :w<CR>
 " Enter visual line mode with <Space><Space>:
 nnoremap <Leader><Leader> V
 
-" Type <Space>N to toggle line numbers:
-nnoremap <silent> <Leader>n :setlocal number!<CR>
+" Type ˆN to toggle line numbers:
+nnoremap <silent> <C-n> :setlocal number!<CR>
 
 " ┌────────────┐
 " │  VimPlugs  │
