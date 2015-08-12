@@ -7,7 +7,7 @@
 
   <key>ProgramArguments</key>
   <array>
-    <string>/usr/local/bin/brew</string><!-- FIXME: Won’t work at 42, because ~/.brew/bin/brew instead! -->
+    <string>/usr/local/bin/brew</string>
     <string>update</string>
   </array>
 
