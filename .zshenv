@@ -52,10 +52,6 @@ export GPG_TTY=$(tty)
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-DOCKER_HOST=tcp://192.168.59.103:2376
-DOCKER_CERT_PATH=${HOME}/.boot2docker/certs/boot2docker-vm
-DOCKER_TLS_VERIFY=1
-
 ANDROID_HOME=${HOME}/Library/Android/sdk
 GRADLE_HOME=/usr/local/opt/gradle/libexec/
 ANDROID_PATH=${JAVA_HOME}/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:$PATH
