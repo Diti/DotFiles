@@ -63,6 +63,7 @@ fi
 # │   Environment variables    │
 # │                            │
 # └────────────────────────────┘
+if type rbenv >/dev/null; then eval "$(rbenv init -)"; fi
 # Most variables are set in ~/.zshenv, automatically loaded at launch.
 # We only export her if they are truly needed, here.
 if [ "$DT_OS" = "Mac" ]; then
