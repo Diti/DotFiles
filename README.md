@@ -24,7 +24,7 @@ Installing
 ----------
 
     cd && git init
-    git remote set-url --add origin git@github.com:Diti/DotFiles.git
+    git remote set-url origin git@github.com:Diti/DotFiles.git
     git fetch
     git rebase origin/master
 
