@@ -20,6 +20,15 @@ Features
   - _TODO: support [neovim]_
 - `zshrc`, with [school] and home settings.
 
+Installing
+----------
+
+    cd && git init
+    git remote set-url --add origin git@github.com:Diti/DotFiles.git
+    git fetch
+    git rebase origin/master
+
+
   [`curl`]: http://curl.haxx.se
   [`dig`]: https://en.wikipedia.org/wiki/dig_(command)
   [DigitalOcean]: https://www.digitalocean.com/?refcode=4e8dbb7743d7
