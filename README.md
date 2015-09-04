@@ -1,9 +1,3 @@
-
-[README]: # This file is in Markdown format.  
-[README]: # It is best viewed with a Markdown reader/converter,  
-[README]: # or directly on GitHub:  
-[README]: # https://github.com/Diti/DotFiles/blob/master/README.md
-
 My home directory’s configuration files are managed by Git.  
 I use the same configuration on all my important machines:
 
