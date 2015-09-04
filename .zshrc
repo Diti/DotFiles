@@ -201,7 +201,8 @@ bindkey '^Z' fancy-ctrl-z
 # │                            │
 # └────────────────────────────┘
 alias cask='brew cask'
-alias ls='ls -lhFG'
+alias ls='ls -hFG'
+alias ll='ls -l'
 alias reload='. ~/.zshrc'
 
 # ┌────────────────────────────┐
