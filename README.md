@@ -27,6 +27,7 @@ Installing
     git remote add origin git@github.com:Diti/DotFiles.git
     git fetch
     git reset --hard origin/master
+    git branch -u origin/master master
 
 
   [`curl`]: http://curl.haxx.se
