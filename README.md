@@ -26,6 +26,7 @@ Installing
     cd && git init
     git remote add origin git@github.com:Diti/DotFiles.git
     git fetch
+    git branch -u origin/master master
     git rebase origin/master
 
 
