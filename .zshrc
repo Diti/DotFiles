@@ -34,6 +34,11 @@ fi
 if [[ "$HOST" =~ ".*42.fr$" && "$BREW_INSTALLED" = true ]]; then
   BREW_PREFIX="$(dirname $(brew --cellar))"
 
+  # If not using our local brew, init the school’s one and reload the path
+  if [ ! -d "$HOME/.brew" ]; then
+    /usr/local/bin/brew update && . ~/.zshrc
+  fi
+
   if [ ! -d "$HOME/Library/Caches/Homebrew" ]; then
     mkdir -p "$HOME/Library/Caches/Homebrew" && export HOMEBREW_CACHE=$_
   fi
@@ -201,6 +206,7 @@ bindkey '^Z' fancy-ctrl-z
 # │                            │
 # └────────────────────────────┘
 alias cask='brew cask'
+alias gpg='gpg2'
 alias ls='ls -hFG'
 alias ll='ls -l'
 alias reload='. ~/.zshrc'
