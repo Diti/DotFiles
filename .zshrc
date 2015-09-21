@@ -207,8 +207,13 @@ bindkey '^Z' fancy-ctrl-z
 # └────────────────────────────┘
 alias cask='brew cask'
 alias gpg='gpg2'
-alias ls='ls -hFG'
-alias ll='ls -l'
+if type "exa" >/dev/null; then
+  alias ls='exa'
+  alias ll='exa -l'
+else
+  alias ls='ls -hFG'
+  alias ll='ls -l'
+fi
 alias reload='. ~/.zshrc'
 
 # ┌────────────────────────────┐
