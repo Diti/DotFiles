@@ -208,8 +208,8 @@ bindkey '^Z' fancy-ctrl-z
 alias cask='brew cask'
 alias gpg='gpg2'
 if type "exa" >/dev/null; then
-  alias ls='exa'
-  alias ll='exa -l'
+  alias ls='exa --git'
+  alias ll='exa --git --long'
 else
   alias ls='ls -hFG'
   alias ll='ls -l'
