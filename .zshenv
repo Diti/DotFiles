@@ -21,6 +21,7 @@ esac
 # Do we have Homebrew?
 # For use in scripts, 0 if yes ("no error"), 1 if no.
 if [ "$DT_OS" = "Mac" ]; then
+  PATH="/usr/local/bin:$PATH"
   if type "brew" >/dev/null; then
     BREW_INSTALLED=true
   else
@@ -30,12 +31,7 @@ else
   BREW_INSTALLED=false
 fi
 
-# The following fix is needed because of school 42’s local Homebrew installation
-if [ "$BREW_INSTALLED" = true ]; then
-  BREW_PREFIX="$(dirname $(brew --cellar))"
-
-  alias brew="${BREW_PREFIX}/bin/brew"
-fi
+BREW_PREFIX="$HOME/.brew"
 
 # ********************************** #
 #                                    #

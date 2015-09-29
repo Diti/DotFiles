@@ -31,8 +31,8 @@ else
 fi
 
 # The following fix is needed because of school 42’s local Homebrew installation
-if [[ "$HOST" =~ ".*42.fr$" && "$BREW_INSTALLED" = true ]]; then
-  BREW_PREFIX="$(dirname $(brew --cellar))"
+if [[ "$HOST" =~ ".*42.fr$" ]]; then
+  BREW_PREFIX="$HOME/.brew"
 
   # If not using our local brew, init the school’s one and reload the path
   if [ ! -d "$HOME/.brew" ]; then
@@ -85,7 +85,7 @@ if [ "$DT_OS" = "Mac" ]; then
 
   if [ "$BREW_INSTALLED" = true ]; then
     # Use Homebrew binaries in priority
-    export PATH="${PATH_WITH_BREW_FIRST}"
+    export PATH="$HOME/.brew/bin:${PATH_WITH_BREW_FIRST}"
 
     # The following are not really environment variables, but heh!
 
