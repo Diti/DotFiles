@@ -93,7 +93,7 @@ if [ "$DT_OS" = "Mac" ]; then
       fpath=(${BREW_PREFIX}/share/zsh-completions $fpath)
     fi
     # The `zsh-syntax-highlighting` sourcing must “stay at the end”
-    if brew list -1 | grep -q "^zsh-syntax-highlighting\$"; then
+    if brew list -1 | grep -q "^zsh-syntax-highlighting\$" && [ -f "${BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
       . "${BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
     fi
   fi
