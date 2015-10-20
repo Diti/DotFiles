@@ -172,6 +172,10 @@ setopt no_bang_hist
 # Enable the use of `# <cmd>`, commented lines
 setopt interactivecomments
 
+# Permits the use of the ^ operator for exclusion in globbing
+# Like so: `grep -u 'some text that won’t be searched in libft' (**|^~libft)/*.{c,h}`
+setopt extendedglob
+
 setopt autocd
 
 # ┌────────────────────────────┐
