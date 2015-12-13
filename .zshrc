@@ -220,6 +220,8 @@ else
 fi
 alias reload='. ~/.zshrc'
 
+pwgen() { perl -pe 'tr/A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+=//dc;' < /dev/urandom | head -c ${1:-32}; echo }
+
 # ┌────────────────────────────┐
 # │                            │
 # │           Extras           │
