@@ -85,7 +85,7 @@ if [ "$DT_OS" = "Mac" ]; then
 
   if [ "$BREW_INSTALLED" = true ]; then
     # Use Homebrew binaries in priority
-    export PATH="$HOME/.brew/bin:${PATH_WITH_BREW_FIRST}"
+    export PATH="$HOME/.brew/bin:$HOME/.composer/vendor/bin:${PATH_WITH_BREW_FIRST}"
 
     # The following are not really environment variables, but heh!
 
