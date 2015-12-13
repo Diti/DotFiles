@@ -35,6 +35,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'Bling/vim-airline'             " Status/tabline for vim that's light as air.
   Plug 'airblade/vim-gitgutter'        " Shows a git diff in the gutter (sign column).
   Plug 'jamessan/vim-gnupg'
+  Plug 'gabrielelana/vim-markdown'
   Plug 'tpope/vim-sensible'            " Defaults everyone can agree on.
   Plug 'wombat256.vim'                 " Wombat theme for 256-color terms
 call plug#end()
