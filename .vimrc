@@ -56,7 +56,7 @@ let g:airline_symbols.whitespace = 'Ξ'
 let g:colorizer_auto_filetype='css,html'
 
 let g:GPGPreferSign=1
-let g:GPGDefaultRecipients=0xFD4F1D56645219A0C6F6F9AB31A49121CD42FF00
+let g:GPGDefaultRecipients=0x3A06DA6A0A7AB7B3795E8A7187F30257AE1E0000
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
