@@ -227,6 +227,6 @@ pwgen() { perl -pe 'tr/A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+=//dc;' < /dev/urandom | 
 # │           Extras           │
 # │                            │
 # └────────────────────────────┘
-umask 0027 # -rw-r----- and drwxr-x--- permissions by default. Group’s X needed for ACLs
+#umask 0027 # -rw-r----- and drwxr-x--- permissions by default. Group’s X needed for ACLs
 
 zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.o' # Ignore *.o files to open with Vim
