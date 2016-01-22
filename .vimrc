@@ -31,6 +31,7 @@ endif
 call plug#begin('~/.vim/plugged')
   Plug 'chrisbra/Colorizer'            " Color hex codes and color names.
   Plug 'editorconfig/editorconfig-vim'
+  Plug 'rust-lang/rust.vim'
   Plug 'scrooloose/syntastic'          " Syntax checking hacks for vim
   Plug 'Bling/vim-airline'             " Status/tabline for vim that's light as air.
   Plug 'airblade/vim-gitgutter'        " Shows a git diff in the gutter (sign column).
