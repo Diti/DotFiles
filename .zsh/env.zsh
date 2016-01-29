@@ -9,4 +9,6 @@ if command_exists 'vim'; then
 	VISUAL=$EDITOR
 fi
 
+BREW_PREFIX=$(brew --prefix)
+
 set +o ALL_EXPORT
