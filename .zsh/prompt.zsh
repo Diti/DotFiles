@@ -1,6 +1,15 @@
-if [ $USER = root ]; then
-    PROMPT="%F{red}%n%f@%F{blue}%m%f ! "
+autoload -U colors && colors
+
+PROMPT_SYMBOL=$(print -P "%(!.#.$)")
+
+if [[ "$PROMPT_SYMBOL" == '#' ]]; then
+    PROMPT_USERNAME="%F{red}%n%f"
 else
-    PROMPT="%F{green}%n%f@%F{blue}%m%f ❯ " # `diti@Iceberg ❯ `
+    PROMPT_USERNAME="%F{green}%n%f"
 fi
-RPROMPT="%~"                           # `~/proj`
+
+PROMPT_HOSTNAME="%F{blue}%m%f"
+
+
+PROMPT="${PROMPT_USERNAME}@${PROMPT_HOSTNAME} ${PROMPT_SYMBOL} "
+RPROMPT="%~"
