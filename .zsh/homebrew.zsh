@@ -1,16 +1,18 @@
-if [[ "$HOST" =~ ".*42.fr$" ]]; then
+if command_exists 'brew' && [[ "$HOST" =~ ".*42.fr$" ]]; then
 
-	export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications --binarydir=${BREW_PREFIX}/bin --caskroom=${BREW_PREFIX}/Caskroom"
+    export BREW_PREFIX="$HOME/.brew"
 
-	# If not using our local brew, init the school’s one and reload the path
-	if [ ! -d "$HOME/.brew" ]; then
-		/usr/local/bin/brew update && source ~/.zshrc
-	fi
+    export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications --binarydir=${BREW_PREFIX}/bin --caskroom=${BREW_PREFIX}/Caskroom"
 
-	# We may not have the rights on /Library/Caches, so we use our user’s
-	if [ ! -d "$HOME/Library/Caches/Homebrew" ]; then
-		mkdir -p "$HOME/Library/Caches/Homebrew" && export HOMEBREW_CACHE=$_
-	fi
+    # If not using our local brew, init the school’s one and reload the path
+    if [ ! -d "$BREW_PREFIX" ]; then
+        test -f /usr/local/bin/brew && $_ update && source ~/.zshrc
+    fi
+
+    # We may not have the rights on /Library/Caches, so we use our user’s
+    if [ ! -d "$HOME/Library/Caches/Homebrew" ]; then
+        mkdir -p "$HOME/Library/Caches/Homebrew" && export HOMEBREW_CACHE=$_
+    fi
 
 fi
 
