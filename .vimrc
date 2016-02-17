@@ -2,6 +2,8 @@ set cursorline
 set mouse=v
 set t_Co=256
 
+set tabstop=4 shiftwidth=4 expandtab
+
 " ┌─────────────────────┐
 " │  Keyboard bindings  │
 " └─────────────────────┘
