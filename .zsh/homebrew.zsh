@@ -9,10 +9,13 @@ if command_exists 'brew' && [[ "$HOST" =~ ".*42.fr$" ]]; then
         test -f /usr/local/bin/brew && $_ update && source ~/.zshrc
     fi
 
-    # We may not have the rights on /Library/Caches, so we use our user’s
-    if [ ! -d "$HOME/Library/Caches/Homebrew" ]; then
-        mkdir -p "$HOME/Library/Caches/Homebrew" && export HOMEBREW_CACHE=$_
-    fi
+    # Use our own directories for Homebrew data
+    local tmpDataDir="/tmp/${USER}-brew-$(date '+%Y%m%d')"
+
+    mkdir -p ${tmpDataDir}/{cache,tmp}
+
+    test -d "${tmpDataDir}/cache" && export HOMEBREW_CACHE=$_
+    test -d "${tmpDataDir}/tmp" && export HOMEBREW_TEMP=$_
 
 fi
 
