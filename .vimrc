@@ -9,7 +9,8 @@ set t_Co=256
 nnoremap Q <Nop>
 
 " http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
-let mapleader = '\<Space>'
+nnoremap <Space> <Nop>
+let mapleader = ' '
 
 " Type <Space>w to save file:
 nnoremap <Leader>w :w<CR>
@@ -31,6 +32,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'chrisbra/Colorizer'            " Color hex codes and color names.
 Plug 'editorconfig/editorconfig-vim'
+Plug 'othree/html5.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/syntastic'          " Syntax checking hacks for vim
 Plug 'Bling/vim-airline'             " Status/tabline for vim that's light as air.
