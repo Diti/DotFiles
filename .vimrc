@@ -72,7 +72,7 @@ let g:syntastic_check_on_wq = 0
 
 let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<C-b>"
-let g:UltiSnipsJumpForwardTrigger="<C-l>"
+let g:UltiSnipsJumpForwardTrigger="<C-n>"
 
 " ┌─────────────┐
 " │  Vim theme  │
