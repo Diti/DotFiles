@@ -42,9 +42,8 @@ Plug 'elzr/vim-json'
 Plug 'gabrielelana/vim-markdown'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/syntastic'          " Syntax checking hacks for vim.
-Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-sensible'            " Defaults everyone can agree on.
-Plug 'honza/vim-snippets'
 Plug 'wombat256.vim'                 " Wombat theme for 256-color terms
 call plug#end()
 
@@ -72,8 +71,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<C-b>"
 let g:UltiSnipsJumpForwardTrigger="<C-l>"
-let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 
 " ┌─────────────┐
 " │  Vim theme  │
