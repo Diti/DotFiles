@@ -32,17 +32,19 @@ if !filereadable(expand('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'Bling/vim-airline'             " Status/tabline for vim that's light as air.
 Plug 'chrisbra/Colorizer'            " Color hex codes and color names.
 Plug 'editorconfig/editorconfig-vim'
-Plug 'othree/html5.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'scrooloose/syntastic'          " Syntax checking hacks for vim
-Plug 'Bling/vim-airline'             " Status/tabline for vim that's light as air.
 Plug 'airblade/vim-gitgutter'        " Shows a git diff in the gutter (sign column).
 Plug 'jamessan/vim-gnupg'
+Plug 'othree/html5.vim'
 Plug 'elzr/vim-json'
 Plug 'gabrielelana/vim-markdown'
+Plug 'rust-lang/rust.vim'
+Plug 'scrooloose/syntastic'          " Syntax checking hacks for vim.
+Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-sensible'            " Defaults everyone can agree on.
+Plug 'honza/vim-snippets'
 Plug 'wombat256.vim'                 " Wombat theme for 256-color terms
 call plug#end()
 
@@ -68,6 +70,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-l>"
+let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 
 " ┌─────────────┐
 " │  Vim theme  │
