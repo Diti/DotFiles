@@ -13,5 +13,5 @@ else
 fi
 
 alias history='fc -il 1'
-
-alias reload='source $HOME/.zshrc'
+alias path='echo "$PATH" | tr : \\n'
+alias reload='zcompile "$HOME"/.zshrc && zcompile "$HOME"/.zsh**/*.zsh && source $HOME/.zshrc'
