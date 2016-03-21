@@ -45,6 +45,7 @@ Plug 'scrooloose/syntastic'          " Syntax checking hacks for vim.
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-sensible'            " Defaults everyone can agree on.
 Plug 'wombat256.vim'                 " Wombat theme for 256-color terms
+Plug 'lervag/vimtex'
 call plug#end()
 
 " ┌──────────────────┐
