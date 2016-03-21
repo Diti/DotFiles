@@ -22,6 +22,10 @@ nnoremap <Leader><Leader> V
 " Type ˆN to toggle line numbers:
 nnoremap <silent> <C-n> :setlocal number!<CR>
 
+" Tagbar (use C-w & arrow to move windows)
+nnoremap <silent> <C-]> :TagbarToggle<CR>
+
+
 " ┌────────────┐
 " │  VimPlugs  │
 " └────────────┘
@@ -44,6 +48,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/syntastic'          " Syntax checking hacks for vim.
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-sensible'            " Defaults everyone can agree on.
+Plug 'majutsushi/tagbar'
 Plug 'wombat256.vim'                 " Wombat theme for 256-color terms
 Plug 'lervag/vimtex'
 call plug#end()
