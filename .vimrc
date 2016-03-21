@@ -25,7 +25,6 @@ nnoremap <silent> <C-n> :setlocal number!<CR>
 " Tagbar (use C-w & arrow to move windows)
 nnoremap <silent> <C-]> :TagbarToggle<CR>
 
-
 " ┌────────────┐
 " │  VimPlugs  │
 " └────────────┘
@@ -75,6 +74,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+let g:tagbar_compact = 1
+autocmd VimEnter * nested :call tagbar#autoopen(1) " Open Tagbar in supported files
+autocmd FileType * nested :call tagbar#autoopen(0) " Open a supported file when Vim running
 
 let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<C-b>"
