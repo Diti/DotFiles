@@ -10,6 +10,9 @@ set tabstop=4 shiftwidth=4 expandtab
 " Disable ex mode:
 nnoremap Q <Nop>
 
+nnoremap j gj
+nnoremap k gk
+
 " http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 nnoremap <Space> <Nop>
 let mapleader = ' '
@@ -22,7 +25,7 @@ nnoremap <Leader><Leader> V
 " Type ˆN to toggle line numbers:
 nnoremap <silent> <C-n> :setlocal number!<CR>
 
-" Tagbar (use C-w & arrow to move windows)
+" Tagbar (use C-w w to change windows)
 nnoremap <silent> <C-]> :TagbarToggle<CR>
 
 " ┌────────────┐
