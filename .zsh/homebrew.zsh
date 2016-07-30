@@ -3,7 +3,7 @@ if command_exists 'brew'; then
     # If we don’t have root rights, use our own Homebrew install on $HOME
     if [ ! -w "/Library/Caches/Homebrew" ]; then
         BREW_PREFIX="$HOME/.brew"
-        export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications --binarydir=${BREW_PREFIX}/bin --caskroom=${BREW_PREFIX}/Caskroom"
+        export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications --caskroom=${BREW_PREFIX}/Caskroom"
         mkdir -p "$HOME/Library/Caches/Homebrew" && export HOMEBREW_CACHE=$_
     fi
 
