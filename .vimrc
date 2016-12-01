@@ -38,21 +38,21 @@ if !filereadable(expand('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'Bling/vim-airline'             " Status/tabline for vim that's light as air.
-Plug 'chrisbra/Colorizer'            " Color hex codes and color names.
+Plug 'Bling/vim-airline'
+Plug 'chrisbra/Colorizer'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'airblade/vim-gitgutter'        " Shows a git diff in the gutter (sign column).
-Plug 'jamessan/vim-gnupg'
-Plug 'othree/html5.vim'
+Plug 'airblade/vim-gitgutter'
+if executable('gpg') || executable ('gpg2') | Plug 'jamessan/vim-gnupg' | endif
+Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'elzr/vim-json'
-Plug 'gabrielelana/vim-markdown'
-Plug 'rust-lang/rust.vim'
-Plug 'scrooloose/syntastic'          " Syntax checking hacks for vim.
+Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'tpope/vim-sensible'            " Defaults everyone can agree on.
-Plug 'majutsushi/tagbar'
-Plug 'wombat256.vim'                 " Wombat theme for 256-color terms
-Plug 'lervag/vimtex'
+Plug 'tpope/vim-sensible'
+Plug 'majutsushi/tagbar', { 'on': 'Tagbar' }
+Plug 'wombat256.vim'
+if executable('latex') | Plug 'lervag/vimtex', { 'for': 'tex' } | endif
 call plug#end()
 
 " ┌──────────────────┐
@@ -78,9 +78,15 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:tagbar_compact = 1
-autocmd VimEnter * nested :call tagbar#autoopen(1) " Open Tagbar in supported files
-autocmd FileType * nested :call tagbar#autoopen(0) " Open a supported file when Vim running
+if exists(':Tagbar')
+    let g:tagbar_compact = 1
+"    autocmd VimEnter * nested :call tagbar#autoopen(1) " Open Tagbar in supported files
+"    autocmd FileType * nested :call tagbar#autoopen(0) " Open a supported file when Vim running
+else
+    echohl WarningMsg
+    echomsg 'Tagbar requires Exuberant Ctags'
+    echohl None
+endif
 
 let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<C-b>"
