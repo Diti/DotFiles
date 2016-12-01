@@ -18,9 +18,7 @@
     autoCorrect = 1
 [push]
     default = simple
-[url "git@github.com:"]
-    insteadOf = "https://github.com/"
 [user]
     signingkey = 0x3A06DA6A0A7AB7B3795E8A7187F30257AE1E0000
     email = kra@diti.me
-    name = Diti Torterat
+    name = Dimitri Torterat
