@@ -46,6 +46,7 @@ if executable('gpg') || executable ('gpg2') | Plug 'jamessan/vim-gnupg' | endif
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'elzr/vim-json'
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
+Plug 'joshglendenning/vim-caddyfile'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
