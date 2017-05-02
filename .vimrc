@@ -49,7 +49,7 @@ Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 Plug 'joshglendenning/vim-caddyfile'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/syntastic'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-sensible'
 Plug 'majutsushi/tagbar', { 'on': 'Tagbar' }
 Plug 'wombat256.vim'

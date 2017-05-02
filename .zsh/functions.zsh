@@ -11,6 +11,10 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
+mkcd() {
+    mkdir $1 && cd $1
+}
+
 pwgen() {
     perl -pe 'tr/A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+=//dc;' </dev/urandom | head -c ${1:-32};
     echo

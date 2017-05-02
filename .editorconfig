@@ -10,7 +10,7 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{css,html}]
+[*.{css,html,ml,mli}]
 indent_size = 2
 
 # Don't trim whitespace in Markdown so we can do two spaces for line breaks.
