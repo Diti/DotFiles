@@ -1,3 +1,4 @@
+set autowrite
 set cursorline
 set mouse=v
 set t_Co=256
@@ -74,6 +75,8 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.whitespace = 'Ξ'
 
 let g:colorizer_auto_filetype='css,html'
+
+let g:go_fmt_command = "goimports"
 
 let g:GPGPreferSign=1
 let g:GPGDefaultRecipients=0x3A06DA6A0A7AB7B3795E8A7187F30257AE1E0000
