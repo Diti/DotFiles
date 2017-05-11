@@ -26,7 +26,10 @@ nnoremap <Leader><Leader> V
 nnoremap <silent> <C-n> :setlocal number!<CR>
 
 " Tagbar (use C-w w to change windows)
-nnoremap <silent> <C-]> :TagbarToggle<CR>
+nnoremap <silent> <C-]> :Tagbar<CR>
+
+autocmd FileType go nmap <leader>b <Plug>(go-build)
+autocmd FileType go nmap <leader>r <Plug>(go-run)
 
 " ┌────────────┐
 " │  VimPlugs  │
