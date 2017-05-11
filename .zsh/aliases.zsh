@@ -12,6 +12,10 @@ else
   alias lla='ls -ahFGl'
 fi
 
+if command_exists 'rlwrap'; then
+  alias ocaml='rlwrap ocaml'
+fi
+
 alias history='fc -il 1'
 alias path='echo "$PATH" | tr : \\n'
 alias reload='zcompile "$HOME"/.zshrc && zcompile "$HOME"/.zsh**/*.zsh && source $HOME/.zshrc'

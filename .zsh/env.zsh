@@ -3,6 +3,8 @@ set -o ALL_EXPORT
 LANG=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
+PATH=$HOME/.composer/vendor/bin:$PATH
+
 command_exists 'brew' && BREW_PREFIX=$(brew --prefix)
 
 if command_exists 'vim'; then
