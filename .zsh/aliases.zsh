@@ -1,5 +1,3 @@
-alias cask='brew cask'
-
 if command_exists 'exa'; then
   alias ls='exa'
   alias la='exa --all'
@@ -19,3 +17,7 @@ fi
 alias history='fc -il 1'
 alias path='echo "$PATH" | tr : \\n'
 alias reload='zcompile "$HOME"/.zshrc && zcompile "$HOME"/.zsh**/*.zsh && source $HOME/.zshrc'
+
+if command_exists 'rlwrap'; then
+  alias ocaml='rlwrap ocaml'
+fi

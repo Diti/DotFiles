@@ -1,6 +1,7 @@
 [alias]
     co = checkout
     cm = commit
+    glog = glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
     slog = log --show-signature
     smerge = merge -S --no-ff
     st = status
