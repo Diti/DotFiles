@@ -28,4 +28,5 @@ if [ -d "$HOME/.zsh/" ]; then
   for file in $HOME/.zsh/**/*.zsh; do
     [ -e "$file" ] && source "$file" || echo "Error sourcing file '$file'" >&2
   done;
+  source $HOME/.zsh/env.zsh
 fi
