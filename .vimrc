@@ -38,21 +38,22 @@ if !filereadable(expand('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'Bling/vim-airline'
+Plug 'airblade/vim-gitgutter'
 Plug 'chrisbra/Colorizer'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'airblade/vim-gitgutter'
-if executable('gpg') || executable ('gpg2') | Plug 'jamessan/vim-gnupg' | endif
-Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'elzr/vim-json'
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 Plug 'joshglendenning/vim-caddyfile'
+Plug 'majutsushi/tagbar', { 'on': 'Tagbar' }
+Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/syntastic'
-"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-sensible'
-Plug 'majutsushi/tagbar', { 'on': 'Tagbar' }
 Plug 'wombat256.vim'
+if executable('go') | Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } | endif
+if executable('gpg') || executable ('gpg2') | Plug 'jamessan/vim-gnupg' | endif
 if executable('latex') | Plug 'lervag/vimtex', { 'for': 'tex' } | endif
 call plug#end()
 
