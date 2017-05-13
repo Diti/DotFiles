@@ -1,7 +1,8 @@
 # FIXME Vim is better :)
 bindkey -e
 
-#autoload -U compinit && compinit
+# If insecure compinit problems, run `compaudit | xargs chmod g-w`
+autoload -U compinit && compinit
 autoload -U promptinit && promptinit
 
 # Wait 10 seconds before a rm-*-something...
