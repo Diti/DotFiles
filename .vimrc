@@ -55,7 +55,7 @@ Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-sensible'
-Plug 'wombat256.vim'
+Plug 'vim-scripts/wombat256.vim'
 if executable('go') | Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } | endif
 if executable('gpg') || executable ('gpg2') | Plug 'jamessan/vim-gnupg' | endif
 if executable('latex') | Plug 'lervag/vimtex', { 'for': 'tex' } | endif
