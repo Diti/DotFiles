@@ -5,6 +5,7 @@ export PATH=$HOME/.composer/vendor/bin:$PATH
 
 command_exists 'brew' && export BREW_PREFIX=$(brew --prefix)
 command_exists 'go' && export PATH=$(go env GOPATH)/bin:$PATH
+command exists 'gpg' || command_exists 'gpg2' && export GPG_TTY=$(tty)
 command_exists 'ocaml' && export OCAMLPARAM='w=A,_'
 
 if command_exists 'vim'; then
