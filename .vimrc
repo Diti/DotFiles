@@ -5,6 +5,11 @@ set t_Co=256
 
 set tabstop=4 shiftwidth=4 expandtab
 
+let stdheader42_file = '/usr/share/vim/vim73/plugin/stdheader.vim'
+if filereadable(stdheader42_file)
+    execute 'source ' . fnameescape(stdheader42_file)
+endif
+
 " ┌─────────────────────┐
 " │  Keyboard bindings  │
 " └─────────────────────┘
@@ -75,6 +80,8 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.whitespace = 'Ξ'
 
 let g:colorizer_auto_filetype='css,html'
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 let g:go_fmt_command = "goimports"
 
