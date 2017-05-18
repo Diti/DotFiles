@@ -25,7 +25,8 @@ esac
 # Source all *.zsh files found in ~/.zsh/
 
 if [ -d "$HOME/.zsh/" ]; then
-  for file in $HOME/.zsh/**/*.zsh; do
+    for file in $HOME/.zsh/**/[^(env)]*.zsh; do
+        echo $file
     [ -e "$file" ] && source "$file" || echo "Error sourcing file '$file'" >&2
   done;
   source $HOME/.zsh/env.zsh
