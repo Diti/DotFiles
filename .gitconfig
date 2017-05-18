@@ -8,7 +8,7 @@
 [color]
     ui = true
 [commit]
-    gpgSign = false
+    gpgSign = true
 [core]
     autocrlf = input
     editor = vim
