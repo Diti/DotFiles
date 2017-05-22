@@ -40,13 +40,15 @@ autocmd FileType go nmap <leader>r <Plug>(go-run)
 " ┌────────────┐
 " │  VimPlugs  │
 " └────────────┘
-if !filereadable(expand('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+let vimplug_file = has('nvim') ? '~/.config/nvim/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
+let vimplugged_dir = has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged'
+
+if !filereadable(expand(vimplug_file))
+    silent execute '!curl -fLo ' . vimplug_file . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     autocmd VimEnter * PlugInstall
 endif
 
-call plug#begin('~/.vim/plugged')
+call plug#begin(vimplugged_dir)
 "Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'Bling/vim-airline'
 Plug 'airblade/vim-gitgutter'
