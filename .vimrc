@@ -58,6 +58,7 @@ Plug 'elzr/vim-json'
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 Plug 'joshglendenning/vim-caddyfile'
 Plug 'majutsushi/tagbar', { 'on': 'Tagbar' }
+Plug 'morhetz/gruvbox'
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/syntastic'
@@ -66,6 +67,7 @@ Plug 'vim-scripts/wombat256.vim'
 if executable('go') | Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } | endif
 if executable('gpg') || executable ('gpg2') | Plug 'jamessan/vim-gnupg' | endif
 if executable('latex') | Plug 'lervag/vimtex', { 'for': 'tex' } | endif
+if has('nvim') && executable('clang') | Plug 'arakashic/chromatica.nvim' | endif
 call plug#end()
 
 " ┌──────────────────┐
@@ -80,6 +82,9 @@ let g:airline_symbols.linenr = ''
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.whitespace = 'Ξ'
+
+let g:chromatica#enable_at_startup=1
+let g:chromatica#libclang_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
 
 let g:colorizer_auto_filetype='css,html'
 
@@ -112,8 +117,14 @@ let g:UltiSnipsJumpForwardTrigger="<C-n>"
 " ┌─────────────┐
 " │  Vim theme  │
 " └─────────────┘
+set background=dark
+set termguicolors
 try
-    colorscheme wombat256mod
+    if has('nvim')
+        colorscheme gruvbox
+    else
+        colorscheme wombat256mod
+    endif
 catch
     colorscheme desert
 endtry
