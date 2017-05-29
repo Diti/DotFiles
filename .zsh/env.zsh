@@ -1,6 +1,8 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+test -d /usr/local/go/bin && export PATH=$_:$PATH
+
 export PATH=$HOME/.composer/vendor/bin:$PATH
 
 command_exists 'brew' && export BREW_PREFIX=$(brew --prefix)

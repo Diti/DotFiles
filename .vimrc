@@ -117,10 +117,10 @@ let g:UltiSnipsJumpForwardTrigger="<C-n>"
 " ┌─────────────┐
 " │  Vim theme  │
 " └─────────────┘
-set background=dark
-set termguicolors
 try
     if has('nvim')
+        set background=dark
+        set termguicolors
         colorscheme gruvbox
     else
         colorscheme wombat256mod
