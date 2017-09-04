@@ -8,3 +8,5 @@ if command_exists 'brew'; then
         source "$hlfile"
     fi
 fi
+
+test -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh && source $_
