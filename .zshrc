@@ -60,15 +60,11 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 command_exists 'go' && export PATH=$(go env GOPATH)/bin:$PATH
-command_exists 'brew' && export BREW_PREFIX=$(brew --prefix)
 command_exists 'ocaml' && export OCAMLPARAM='w=A,_'
 command_exists 'vim' && export EDITOR=$_ USE_EDITOR=$_ VISUAL=$_
 command_exists 'nvim' && export EDITOR=$_ USE_EDITOR=$_ VISUAL=$_
 
 test -d $HOME/.composer/vendor/bin && export PATH=$_:$PATH
-
-command_exists 'brew' && export BREW_PREFIX=$(brew --prefix)
-command_exists 'go' && export PATH=$(go env GOPATH)/bin:$PATH
 
 if command_exists 'gpg' || command_exists 'gpg2'; then
     export GPG_TTY=$(tty)
@@ -85,6 +81,8 @@ fi
 if command_exists 'brew'; then
     if [[ "$HOST" == *42.fr ]]
     then
+        BREW_PREFIX="$HOME"/.brew
+
         # If we don’t have root rights, use our own Homebrew install on $HOME
         if [ ! -w "/Library/Caches/Homebrew" ]; then
             export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
