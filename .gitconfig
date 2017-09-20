@@ -13,8 +13,6 @@
     autocrlf = input
     editor = vim
     excludesFile = ~/.gitignore_global
-[gpg]
-    program = gpg2
 [help]
     autoCorrect = 1
 [push]
