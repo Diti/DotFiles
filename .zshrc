@@ -5,15 +5,15 @@
 command_exists() { type "$1" &>/dev/null; }
 
 if command_exists 'exa'; then
-  alias ls='exa'
-  alias la='exa --all'
-  alias ll='exa --git --long'
-  alias lla='exa --all --git --long'
+    alias ls='exa'
+    alias la='exa --all'
+    alias ll='exa --git --long'
+    alias lla='exa --all --git --long'
 else
-  alias ls='ls -hFG'
-  alias la='ls -ahFG'
-  alias ll='ls -hFGl'
-  alias lla='ls -ahFGl'
+    alias ls='ls -hFG'
+    alias la='ls -ahFG'
+    alias ll='ls -hFGl'
+    alias lla='ls -ahFGl'
 fi
 
 command_exists 'rlwrap' && alias ocaml='rlwrap ocaml'
@@ -24,13 +24,13 @@ alias reload='zcompile "$HOME"/.zshrc && zcompile "$HOME"/.zsh**/*.zsh && source
 
 # http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 fancy-ctrl-z () {
-    if [[ $#BUFFER -eq 0 ]]; then
-        BUFFER="fg"
-        zle accept-line
-    else
-        zle push-input
-        zle clear-screen
-    fi
+if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+else
+    zle push-input
+    zle clear-screen
+fi
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
@@ -78,9 +78,13 @@ fi
 # │             School (42)              │
 # └──────────────────────────────────────┘
 
-if command_exists 'brew'; then
-    if [[ "$HOST" == *42.fr ]]
-    then
+if [[ "$HOST" == *42.fr ]]; then
+
+    if test -d /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/share/man; then
+        export MANPATH="$_:$MANPATH"
+    fi
+
+    if command_exists 'brew'; then
         BREW_PREFIX="$HOME"/.brew
 
         # If we don’t have root rights, use our own Homebrew install on $HOME
@@ -88,12 +92,6 @@ if command_exists 'brew'; then
             export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
             mkdir -p "$HOME/Library/Caches/Homebrew" && export HOMEBREW_CACHE=$_
         fi
-
-        # Setup our own local Homebrew install if needed
-        #if [ ! -d "$BREW_PREFIX" ]; then
-        #    test -f /usr/local/bin/brew && $_ update && source ~/.zshrc
-        #fi
-
 
         # Ensure $BREW_PREFIX is set
         : ${BREW_PREFIX:=$(brew --prefix)}
