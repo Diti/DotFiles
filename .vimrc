@@ -5,9 +5,11 @@ set t_Co=256
 
 set tabstop=4 shiftwidth=4 expandtab
 
-let stdheader42_file = '/usr/share/vim/vim73/plugin/stdheader.vim'
-if filereadable(stdheader42_file)
-    execute 'source ' . fnameescape(stdheader42_file)
+if !exists(':Stdheader')
+    let stdheader42_file = '/usr/share/vim/vim80/plugin/stdheader.vim'
+    if filereadable(stdheader42_file)
+        execute 'source ' . fnameescape(stdheader42_file)
+    endif
 endif
 
 " ┌─────────────────────┐
@@ -84,7 +86,7 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.whitespace = 'Ξ'
 
 let g:chromatica#enable_at_startup=1
-let g:chromatica#libclang_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+let g:chromatica#libclang_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
 
 let g:colorizer_auto_filetype='css,html'
 
@@ -102,8 +104,8 @@ let g:syntastic_check_on_wq = 0
 
 if exists(':Tagbar')
     let g:tagbar_compact = 1
-"    autocmd VimEnter * nested :call tagbar#autoopen(1) " Open Tagbar in supported files
-"    autocmd FileType * nested :call tagbar#autoopen(0) " Open a supported file when Vim running
+    "    autocmd VimEnter * nested :call tagbar#autoopen(1) " Open Tagbar in supported files
+    "    autocmd FileType * nested :call tagbar#autoopen(0) " Open a supported file when Vim running
 else
     echohl WarningMsg
     echomsg 'Tagbar requires Exuberant Ctags'
