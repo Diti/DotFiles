@@ -20,7 +20,7 @@ command_exists 'rlwrap' && alias ocaml='rlwrap ocaml'
 
 alias history='fc -il 1'
 alias path='echo "$PATH" | tr : \\n'
-alias reload='zcompile "$HOME"/.zshrc && zcompile "$HOME"/.zsh**/*.zsh && source $HOME/.zshrc'
+alias reload='. $HOME/.zshrc'
 
 # http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 fancy-ctrl-z () {
@@ -64,6 +64,7 @@ command_exists 'ocaml' && export OCAMLPARAM='w=A,_'
 command_exists 'vim' && export EDITOR=$_ USE_EDITOR=$_ VISUAL=$_
 command_exists 'nvim' && export EDITOR=$_ USE_EDITOR=$_ VISUAL=$_
 
+test -d $HOME/.cargo/env && source $_
 test -d $HOME/.composer/vendor/bin && export PATH=$_:$PATH
 
 if command_exists 'gpg' || command_exists 'gpg2'; then
@@ -93,14 +94,14 @@ if [[ "$HOST" == *42.fr ]]; then
             mkdir -p "$HOME/Library/Caches/Homebrew" && export HOMEBREW_CACHE=$_
         fi
 
-        # Ensure $BREW_PREFIX is set
-        : ${BREW_PREFIX:=$(brew --prefix)}
-
         # Use Homebrew’s binaries instead of the system’s
         export PATH=${BREW_PREFIX}/sbin:${BREW_PREFIX}/bin:${PATH}
     fi
 
 fi
+
+# Ensure $BREW_PREFIX is set
+: ${BREW_PREFIX:=$(brew --prefix)}
 
 # ┌──────────────────────────────────────┐
 # │             ZSH options              │
