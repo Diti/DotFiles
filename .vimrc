@@ -1,6 +1,8 @@
 set autowrite
 set cursorline
 set mouse=v
+set number
+set relativenumber
 set t_Co=256
 
 set tabstop=4 shiftwidth=4 expandtab
@@ -27,11 +29,15 @@ let mapleader = ' '
 
 " Type <Space>w to save file:
 nnoremap <Leader>w :w<CR>
+
 " Enter visual line mode with <Space><Space>:
 nnoremap <Leader><Leader> V
 
-" Type ˆN to toggle line numbers:
-nnoremap <silent> <C-n> :setlocal number!<CR>
+" Highlighted searches reset
+nnoremap <silent> <Leader>/ :nohlsearch<CR>
+
+" NERDTree explorer
+nnoremap <silent> <C-n> :NERDTreeFocus<CR>
 
 " Tagbar (use C-w w to change windows)
 nnoremap <silent> <C-]> :Tagbar<CR>
@@ -51,25 +57,30 @@ if !filereadable(expand(vimplug_file))
 endif
 
 call plug#begin(vimplugged_dir)
-"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'Bling/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'chrisbra/Colorizer'
+Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'elzr/vim-json'
-Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
-Plug 'joshglendenning/vim-caddyfile'
 Plug 'majutsushi/tagbar', { 'on': 'Tagbar' }
 Plug 'morhetz/gruvbox'
-Plug 'othree/html5.vim', { 'for': 'html' }
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'scrooloose/syntastic'
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-sensible'
 Plug 'vim-scripts/wombat256.vim'
+Plug 'w0rp/ale'
 if executable('go') | Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } | endif
 if executable('gpg') || executable ('gpg2') | Plug 'jamessan/vim-gnupg' | endif
 if executable('latex') | Plug 'lervag/vimtex', { 'for': 'tex' } | endif
 if has('nvim') && executable('clang') | Plug 'arakashic/chromatica.nvim' | endif
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 call plug#end()
 
 " ┌──────────────────┐
@@ -85,10 +96,14 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.whitespace = 'Ξ'
 
-let g:chromatica#enable_at_startup=1
-let g:chromatica#libclang_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+if has('nvim') && executable('clang')
+    let g:chromatica#enable_at_startup=1
+    let g:chromatica#libclang_path=system('printf "%s" $(mdfind libclang.dylib | head -n 1)')
+endif
 
 let g:colorizer_auto_filetype='css,html'
+
+let g:deoplete#enable_at_startup = 1
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
@@ -130,3 +145,10 @@ try
 catch
     colorscheme desert
 endtry
+
+" ┌────────────────────┐
+" │  vimrc autoreload  │
+" └────────────────────┘
+augroup autoReloadConfig
+    autocmd Filetype vim autocmd! BufWritePost <buffer> source $MYVIMRC
+augroup END
