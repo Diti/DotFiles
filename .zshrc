@@ -101,7 +101,9 @@ if [[ "$HOST" == *42.fr ]]; then
 fi
 
 # Ensure $BREW_PREFIX is set
-: ${BREW_PREFIX:=$(brew --prefix)}
+if command_exists 'brew'; then
+    ${BREW_PREFIX:=$(brew --prefix)}
+fi
 
 # ┌──────────────────────────────────────┐
 # │             ZSH options              │
