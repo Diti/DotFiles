@@ -54,7 +54,7 @@ call plug#begin(vimplugged_dir)
 "Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'Bling/vim-airline'
 Plug 'airblade/vim-gitgutter'
-Plug 'chrisbra/Colorizer'
+Plug 'lilydjwg/colorizer'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elzr/vim-json'
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }

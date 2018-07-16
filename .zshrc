@@ -55,24 +55,27 @@ zstyle ':completion:*:*:vi*:*:*files' ignored-patterns '*.(class|o)'
 # ┌──────────────────────────────────────┐
 # │             Environment              │
 # └──────────────────────────────────────┘
+set -o ALL_EXPORT
 
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+PATH=$HOME/bin:$PATH
 
-command_exists 'go' && export PATH=$(go env GOPATH)/bin:$PATH
-command_exists 'ocaml' && export OCAMLPARAM='w=A,_'
-command_exists 'vim' && export EDITOR=$_ USE_EDITOR=$_ VISUAL=$_
-command_exists 'nvim' && export EDITOR=$_ USE_EDITOR=$_ VISUAL=$_
+LANG=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+
+command_exists 'go' && GOPATH="$HOME"
+command_exists 'ocaml' && OCAMLPARAM='w=A,_'
+command_exists 'vim' && EDITOR=$_ USE_EDITOR=$_ VISUAL=$_
+command_exists 'nvim' && EDITOR=$_ USE_EDITOR=$_ VISUAL=$_
 
 test -d $HOME/.cargo/env && source $_
-test -d $HOME/.composer/vendor/bin && export PATH=$_:$PATH
+test -d $HOME/.composer/vendor/bin && PATH=$_:$PATH
 
 if command_exists 'gpg' || command_exists 'gpg2'; then
-    export GPG_TTY=$(tty)
+    GPG_TTY=$(tty)
     eval $(gpg-agent --enable-ssh-support --daemon 2>/dev/null)
     gpg-connect-agent updatestartuptty /bye >/dev/null
     unset SSH_AGENT_PID
-    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+    SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
 
 # ┌──────────────────────────────────────┐
@@ -82,7 +85,7 @@ fi
 if [[ "$HOST" == *42.fr ]]; then
 
     if test -d /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/share/man; then
-        export MANPATH="$_:$MANPATH"
+        MANPATH="$_:$MANPATH"
     fi
 
     if command_exists 'brew'; then
@@ -90,18 +93,21 @@ if [[ "$HOST" == *42.fr ]]; then
 
         # If we don’t have root rights, use our own Homebrew install on $HOME
         if [ ! -w "/Library/Caches/Homebrew" ]; then
-            export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
-            mkdir -p "$HOME/Library/Caches/Homebrew" && export HOMEBREW_CACHE=$_
+            HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
+            mkdir -p "$HOME/Library/Caches/Homebrew" && HOMEBREW_CACHE=$_
         fi
 
         # Use Homebrew’s binaries instead of the system’s
-        export PATH=${BREW_PREFIX}/sbin:${BREW_PREFIX}/bin:${PATH}
+        PATH=${BREW_PREFIX}/sbin:${BREW_PREFIX}/bin:${PATH}
     fi
+
+else
+
+    BREW_PREFIX=$(brew --prefix)
 
 fi
 
-# Ensure $BREW_PREFIX is set
-: ${BREW_PREFIX:=$(brew --prefix)}
+set +o ALL_EXPORT
 
 # ┌──────────────────────────────────────┐
 # │             ZSH options              │
