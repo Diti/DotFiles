@@ -103,7 +103,9 @@ if [[ "$HOST" == *42.fr ]]; then
 
 else
 
-    BREW_PREFIX=$(brew --prefix)
+    if command_exists 'brew'; then
+        ${BREW_PREFIX:=$(brew --prefix)}
+    fi
 
 fi
 
